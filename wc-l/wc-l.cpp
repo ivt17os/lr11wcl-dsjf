@@ -21,7 +21,7 @@ int main(int argc, char** argv ) {
     //    return 1;
     //}
 	
-	cout << "Opening file a.txt\n"; // << argv[1] << "\n";
+	cout << "Opening file a.txt"; // << argv[1] << "\n";
 	
 	ifstream f("a.txt");
 	
@@ -34,7 +34,7 @@ int main(int argc, char** argv ) {
 	}
 	QueryPerformanceCounter((LARGE_INTEGER *)&t2);// смотрим время после окончания цикла
 
-	cout << "\nTime spent:" << (t2-t1)/(1.*freq);
+	cout << "\nTime spent:"<<setprecision(3) << (t2-t1)/(1.*freq);
 	cout << "\n" << kol << " strok v tekste";
 	return 0;
 }
