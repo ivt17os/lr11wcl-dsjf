@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, char** argv ) {
     long long t1, t2, freq;
-	int kol=0;
+	long long kol=0;
 	string str;
 	
 	//if (argc == 1) 
@@ -23,17 +23,27 @@ int main(int argc, char** argv ) {
 	
 	cout << "Opening file a.txt"; // << argv[1] << "\n";
 	
-	ifstream f("a.txt");
-	
-    QueryPerformanceFrequency((LARGE_INTEGER *)&freq);// запрашиваем число тиков в 1 сек
+	//ifstream f("a.txt");
+	FILE* f;
 
+	QueryPerformanceFrequency((LARGE_INTEGER *)&freq);// запрашиваем число тиков в 1 сек
+	f = fopen("a.txt", "rb");
 	QueryPerformanceCounter((LARGE_INTEGER *)&t1);// смотрим время после окончания цикла
-	while (!f.eof()) {
-		getline(f, str);
+	char * s = new char[200000000];
+	while(!feof(f)){
+		fgets(s, 200000000, f);
 		kol++;
 	}
 	QueryPerformanceCounter((LARGE_INTEGER *)&t2);// смотрим время после окончания цикла
-
+	fclose(f);
+	/*fprintf("\nTime spent:%d", (t2-t1)/(1.*freq));
+	fprintf("%lld", kol);
+	*/
+  
+	/*while (!f.eof()) {
+		getline(f, str);
+		kol++;
+		}*/
 	cout << "\nTime spent:"<<setprecision(3) << (t2-t1)/(1.*freq);
 	cout << "\n" << kol << " strok v tekste";
 	return 0;
