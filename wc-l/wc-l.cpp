@@ -36,15 +36,15 @@ int main(int argc, char** argv ) {
 	}
 	QueryPerformanceCounter((LARGE_INTEGER *)&t2);// смотрим время после окончания цикла
 	fclose(f);
-	/*fprintf("\nTime spent:%d", (t2-t1)/(1.*freq));
-	fprintf("%lld", kol);
-	*/
   
+	printf("\nTime spent:%.3f", (t2-t1)/(1.*freq));
+	printf("\n%lld", kol);
+	
 	/*while (!f.eof()) {
 		getline(f, str);
 		kol++;
-		}*/
+		}
 	cout << "\nTime spent:"<<setprecision(3) << (t2-t1)/(1.*freq);
-	cout << "\n" << kol << " strok v tekste";
+	cout << "\n" << kol << " strok v tekste";*/
 	return 0;
 }
